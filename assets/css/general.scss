@@ -457,7 +457,7 @@ body .clearfix {
 
     .flatpickr-months {
         padding: 14px 8px;
-        background: #429a82;
+        background: #1a1a1a;
         border-radius: 0;
     }
 
@@ -497,7 +497,7 @@ body .clearfix {
     .flatpickr-weekdays,
     .flatpickr-current-month .flatpickr-monthDropdown-months,
     span.flatpickr-weekday {
-        background: #429a82;
+        background: #1a1a1a;
         color: white;
         -webkit-appearance: none;
         font-weight: 500;
@@ -529,8 +529,8 @@ body .clearfix {
         transition: all 0.15s ease;
 
         &:hover {
-            background: #f0faf7;
-            color: #2d7a65;
+            background: #f3f4f6;
+            color: #1a1a1a;
             border: none;
         }
     }
@@ -553,20 +553,20 @@ body .clearfix {
     .flatpickr-day.startRange.prevMonthDay,
     .flatpickr-day.startRange:focus,
     .flatpickr-day.startRange:hover {
-        background: #429a82;
-        border-color: #429a82;
+        background: #1a1a1a;
+        border-color: #1a1a1a;
         color: white;
-        box-shadow: 0 2px 8px rgba(66, 154, 130, 0.35);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.20);
         font-weight: 600;
     }
 
     .flatpickr-day.today {
-        border: 2px solid #429a82;
-        color: #429a82;
+        border: 2px solid #374151;
+        color: #374151;
         font-weight: 600;
 
         &:hover {
-            background: #f0faf7;
+            background: #f3f4f6;
         }
     }
 

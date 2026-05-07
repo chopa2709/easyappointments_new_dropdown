@@ -48,7 +48,7 @@ App.Pages.BookingWeeklyGrid = (function () {
     // Helpers
     // ─────────────────────────────────────────────────────────────────────────
     function timeFmt() {
-        return vars('time_format') === 'regular' ? 'h:mm a' : 'HH:mm';
+        return 'HH:mm';
     }
 
     function svcDuration() {
