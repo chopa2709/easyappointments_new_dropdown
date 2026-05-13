@@ -186,7 +186,7 @@ App.Pages.BookingWeeklyGrid = (function () {
         Promise.all(days.map((d) => fetchDay(d.format('YYYY-MM-DD')))).then((data) => {
             render(days, data);
             busy = false;
-            $prev.prop('disabled', weekStart.isSameOrBefore(moment().startOf('isoWeek')));
+            $prev.prop('disabled', weekStart.isSameOrBefore(moment().startOf('day')));
             $next.prop('disabled', false);
         });
     }
@@ -225,7 +225,7 @@ App.Pages.BookingWeeklyGrid = (function () {
         selDate = null;
         selTime = null;
         loaded  = false;
-        weekStart = moment().startOf('isoWeek');
+        weekStart = moment().startOf('day');
         if ($hours) $hours.empty();
     }
 
@@ -262,14 +262,14 @@ App.Pages.BookingWeeklyGrid = (function () {
 
         if (!$grid.length) return;
 
-        weekStart = moment().startOf('isoWeek');
+        weekStart = moment().startOf('day');
 
         // ── Manage mode: pre-select existing appointment ──
         if (vars('manage_mode') && vars('appointment_data')) {
             const appt = vars('appointment_data');
             selDate   = moment(appt.start_datetime).format('YYYY-MM-DD');
             selTime   = moment(appt.start_datetime).format('HH:mm');
-            weekStart = moment(selDate).startOf('isoWeek');
+            weekStart = moment(selDate).startOf('day');
 
             $hours.empty();
             $('<button>', { class: 'available-hour selected-hour', text: moment(selTime, 'HH:mm').format(timeFmt()) })
@@ -278,7 +278,7 @@ App.Pages.BookingWeeklyGrid = (function () {
 
         // ── Navigation ──
         $prev.on('click', () => {
-            const min = moment().startOf('isoWeek');
+            const min = moment().startOf('day');
             if (weekStart.isAfter(min)) { weekStart.subtract(1, 'week'); cache = {}; loadWeek(); }
         });
         $next.on('click', () => { weekStart.add(1, 'week'); cache = {}; loadWeek(); });
