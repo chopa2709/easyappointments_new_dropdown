@@ -9,7 +9,7 @@ $config['protocol']  = 'smtp';
 $config['mailtype']  = 'html';
 
 $config['smtp_host']   = 'eoslab.sakura.ne.jp';
-$config['smtp_user']   = 'santasara_info@mail.eos-lab.net';
+$config['smtp_user']   = 'eos_info@mail.eos-lab.net';
 $config['smtp_pass']   = 'Onsenroot400';
 $config['smtp_crypto'] = 'tls';
 $config['smtp_port']   = 587;
