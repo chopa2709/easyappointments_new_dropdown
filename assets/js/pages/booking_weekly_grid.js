@@ -119,7 +119,10 @@ App.Pages.BookingWeeklyGrid = (function () {
         // Collect all unique times
         const timesSet = new Set();
         data.forEach((d) => d.forEach((h) => timesSet.add(h.value)));
-        const times = [...timesSet].sort();
+        const times = [...timesSet].sort().filter((t) => {
+            const mins = parseInt(t.split(':')[1], 10);
+            return mins === 0 || mins === 30;
+        });
 
         // Row 0: corner + day headers
         $grid.append('<div class="wg-corner"></div>');
