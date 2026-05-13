@@ -17,7 +17,7 @@
                 <!-- Provider shown first -->
                 <div class="mb-3">
                     <label for="select-provider">
-                        <strong><?= lang('provider') ?></strong>
+                        <strong>マシン</strong>
                     </label>
 
                     <select id="select-provider" class="form-select">
@@ -37,7 +37,7 @@
                 <!-- Service shown after provider is selected (hidden initially) -->
                 <div class="mb-3" hidden>
                     <label for="select-service">
-                        <strong><?= lang('service') ?></strong>
+                        <strong>利用時間</strong>
                     </label>
 
                     <select id="select-service" class="form-select">

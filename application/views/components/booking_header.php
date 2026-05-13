@@ -13,7 +13,7 @@
         <div class="brand-text">
             <span class="brand-name"><?= e($company_name) ?></span>
             <span class="display-booking-selection">
-                <?= lang('service') ?> │ <?= lang('provider') ?>
+                利用時間 │ マシン
             </span>
         </div>
     </div>

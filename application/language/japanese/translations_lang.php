@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 // Japanese
 $lang['page_title'] = '予約システム - ';
-$lang['service_and_provider'] = 'メニューと担当者の選択:';
+$lang['service_and_provider'] = 'マシンと利用時間の選択';
 $lang['select_service'] = 'メニュー';
 $lang['select_provider'] = '担当者';
 $lang['duration'] = '所要時間';

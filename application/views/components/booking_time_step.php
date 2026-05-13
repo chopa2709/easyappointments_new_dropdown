@@ -12,10 +12,7 @@
         <h2 class="frame-title"><?= lang('appointment_date_and_time') ?></h2>
 
         <div class="frame-content">
-            <div class="mb-3">
-                <label for="select-timezone" class="form-label">
-                    <?= lang('timezone') ?>
-                </label>
+            <div hidden>
                 <?php component('timezone_dropdown', [
                     'attributes' => 'id="select-timezone" class="form-select" value="UTC"',
                     'grouped_timezones' => $grouped_timezones,
