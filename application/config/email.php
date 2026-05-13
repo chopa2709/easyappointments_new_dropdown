@@ -5,17 +5,16 @@
 // @link https://codeigniter.com/user_guide/libraries/email.html
 
 $config['useragent'] = 'Easy!Appointments';
-$config['protocol'] = 'mail'; // or 'smtp'
-$config['mailtype'] = 'html'; // or 'text'
-// $config['smtp_debug'] = '0'; // or '1'
-// $config['smtp_auth'] = TRUE; //or FALSE for anonymous relay.
-// $config['smtp_host'] = '';
-// $config['smtp_user'] = '';
-// $config['smtp_pass'] = '';
-// $config['smtp_crypto'] = 'ssl'; // or 'tls'
-// $config['smtp_port'] = 25;
-// $config['from_name'] = '';
-// $config['from_address'] = '';
-// $config['reply_to'] = '';
-$config['crlf'] = "\r\n";
+$config['protocol']  = 'smtp';
+$config['mailtype']  = 'html';
+
+$config['smtp_host']   = 'eoslab.sakura.ne.jp';
+$config['smtp_user']   = 'santasara_info@mail.eos-lab.net';
+$config['smtp_pass']   = 'Onsenroot400';
+$config['smtp_crypto'] = 'tls';
+$config['smtp_port']   = 587;
+$config['smtp_auth']   = TRUE;
+
+$config['crlf']    = "\r\n";
 $config['newline'] = "\r\n";
+$config['charset'] = 'utf-8';
