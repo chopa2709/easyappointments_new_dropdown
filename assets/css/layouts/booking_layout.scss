@@ -453,11 +453,13 @@ body {
                 }
             }
 
-            &.wg-sel .wg-mark {
+            &.wg-sel .wg-mark,
+            &.wg-avail.wg-sel:hover .wg-mark {
                 background: #1a1a1a;
                 border-color: #1a1a1a;
                 color: #ffffff;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+                transform: none;
             }
         }
 
