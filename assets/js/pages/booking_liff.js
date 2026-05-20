@@ -32,11 +32,26 @@
         });
     }
 
+    function applyLiffLayout() {
+        document.body.classList.add('liff-mode');
+        const style = document.createElement('style');
+        style.textContent = [
+            '.liff-mode .command-buttons {',
+            '  position: fixed; bottom: 0; left: 0; right: 0;',
+            '  background: #fff; padding: 12px 16px;',
+            '  box-shadow: 0 -2px 8px rgba(0,0,0,0.12); z-index: 200;',
+            '}',
+            '.liff-mode .wizard-frame { padding-bottom: 72px; }',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
     try {
         if (typeof liff === 'undefined') return;
 
         liff.init({ liffId: LIFF_ID })
             .then(() => {
+                if (liff.isInClient()) applyLiffLayout();
                 if (!liff.isLoggedIn()) {
                     if (liff.isInClient()) liff.login();
                     return null;
