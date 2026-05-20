@@ -37,20 +37,29 @@
         });
     }
 
-    liff.init({ liffId: LIFF_ID })
-        .then(() => {
-            dbg('init OK | inClient:' + liff.isInClient() + ' loggedIn:' + liff.isLoggedIn());
-            if (!liff.isLoggedIn()) {
-                if (liff.isInClient()) liff.login();
-                return null;
-            }
-            return liff.getProfile();
-        })
-        .then((profile) => {
-            if (!profile) { dbg('no profile'); return; }
-            dbg('profile: ' + profile.displayName);
-            document.addEventListener('DOMContentLoaded', () => watchStep3(profile.displayName));
-            if (document.readyState !== 'loading') watchStep3(profile.displayName);
-        })
-        .catch((e) => dbg('error: ' + e));
+    try {
+        if (typeof liff === 'undefined') {
+            dbg('error: liff SDK not loaded');
+            return;
+        }
+
+        liff.init({ liffId: LIFF_ID })
+            .then(() => {
+                dbg('init OK | inClient:' + liff.isInClient() + ' loggedIn:' + liff.isLoggedIn());
+                if (!liff.isLoggedIn()) {
+                    if (liff.isInClient()) liff.login();
+                    return null;
+                }
+                return liff.getProfile();
+            })
+            .then((profile) => {
+                if (!profile) { dbg('no profile'); return; }
+                dbg('profile: ' + profile.displayName);
+                document.addEventListener('DOMContentLoaded', () => watchStep3(profile.displayName));
+                if (document.readyState !== 'loading') watchStep3(profile.displayName);
+            })
+            .catch((e) => dbg('promise error: ' + e));
+    } catch (e) {
+        dbg('exception: ' + e);
+    }
 })();
