@@ -34,18 +34,18 @@
 
     liff.init({ liffId: LIFF_ID })
         .then(() => {
+            console.log('[LIFF] init ok / isInClient:', liff.isInClient(), '/ isLoggedIn:', liff.isLoggedIn());
             if (!liff.isLoggedIn()) {
-                // Only auto-login inside the LINE client; skip in regular browsers
                 if (liff.isInClient()) liff.login();
                 return null;
             }
             return liff.getProfile();
         })
         .then((profile) => {
-            if (!profile) return;
+            if (!profile) { console.log('[LIFF] no profile'); return; }
+            console.log('[LIFF] displayName:', profile.displayName);
             document.addEventListener('DOMContentLoaded', () => watchStep3(profile.displayName));
-            // DOMContentLoaded may have already fired
             if (document.readyState !== 'loading') watchStep3(profile.displayName);
         })
-        .catch(() => {}); // Silently fail if LIFF is unavailable
+        .catch((e) => console.error('[LIFF] error:', e));
 })();
