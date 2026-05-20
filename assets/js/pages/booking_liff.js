@@ -1,22 +1,15 @@
 /* ----------------------------------------------------------------------------
  * LINE LIFF profile auto-fill for the booking form.
+ *
+ * When the booking page is opened inside the LINE app via LIFF, this script
+ * fetches the user's LINE display name and pre-fills the #first-name field.
+ * It silently does nothing when accessed from a regular browser.
  * ---------------------------------------------------------------------------- */
 
 (function () {
     'use strict';
 
     const LIFF_ID = '2010079125-mOLd6Nbp';
-
-    function dbg(msg) {
-        var d = document.getElementById('liff-dbg');
-        if (!d) {
-            d = document.createElement('div');
-            d.id = 'liff-dbg';
-            d.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#facc15;color:#000;font-size:11px;padding:4px 8px;z-index:9999;';
-            document.body.appendChild(d);
-        }
-        d.textContent = msg;
-    }
 
     function fillName(displayName) {
         const field = document.getElementById('first-name');
@@ -38,14 +31,10 @@
     }
 
     try {
-        if (typeof liff === 'undefined') {
-            dbg('error: liff SDK not loaded');
-            return;
-        }
+        if (typeof liff === 'undefined') return;
 
         liff.init({ liffId: LIFF_ID })
             .then(() => {
-                dbg('init OK | inClient:' + liff.isInClient() + ' loggedIn:' + liff.isLoggedIn());
                 if (!liff.isLoggedIn()) {
                     if (liff.isInClient()) liff.login();
                     return null;
@@ -53,13 +42,10 @@
                 return liff.getProfile();
             })
             .then((profile) => {
-                if (!profile) { dbg('no profile'); return; }
-                dbg('profile: ' + profile.displayName);
+                if (!profile) return;
                 document.addEventListener('DOMContentLoaded', () => watchStep3(profile.displayName));
                 if (document.readyState !== 'loading') watchStep3(profile.displayName);
             })
-            .catch((e) => dbg('promise error: ' + e));
-    } catch (e) {
-        dbg('exception: ' + e);
-    }
+            .catch(() => {});
+    } catch (e) {}
 })();
