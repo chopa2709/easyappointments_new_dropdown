@@ -15,6 +15,8 @@
         const field = document.getElementById('first-name');
         if (field && !field.value) {
             field.value = displayName;
+            const wrapper = field.closest('.mb-3');
+            if (wrapper) wrapper.hidden = true;
         }
     }
 
