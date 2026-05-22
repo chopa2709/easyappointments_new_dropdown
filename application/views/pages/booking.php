@@ -60,6 +60,9 @@
 <script src="<?= asset_url('assets/js/pages/booking.js') ?>"></script>
 <script src="<?= asset_url('assets/js/pages/booking_weekly_grid.js') ?>"></script>
 <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<?php if (defined('Config::LIFF_ID') || (new ReflectionClass('Config'))->hasConstant('LIFF_ID')): ?>
+<script>window.LIFF_ID = '<?= Config::LIFF_ID ?>';</script>
+<?php endif; ?>
 <script src="<?= base_url('assets/js/pages/booking_liff.js') ?>?<?= config('cache_busting_token') ?>"></script>
 
 <?php end_section('scripts'); ?>

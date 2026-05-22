@@ -9,7 +9,7 @@
 (function () {
     'use strict';
 
-    const LIFF_ID = '2010079125-mOLd6Nbp';
+    const LIFF_ID = window.LIFF_ID || '2010079125-mOLd6Nbp';
 
     function fillName(displayName) {
         const field = document.getElementById('first-name');
